@@ -4,11 +4,12 @@ import java.util.Random;
 class Patient {
 //	private static int randomTime
 	
-	private int randomTime;
+	private int time;
 	private String appointmentType;
+	private String name;
 	
-	public int getRandomTime() {
-		return randomTime;
+	public int getTime() {
+		return time;
 	}
 
 
@@ -20,7 +21,7 @@ class Patient {
 
 
 	public void setRandomTime(int randomTime) {
-		this.randomTime = randomTime;
+		this.time = randomTime;
 	}
 
 
@@ -30,8 +31,10 @@ class Patient {
 	}
 
 	
-	Patient(String aType) {
+	Patient(String aType, String n, int forTime) {
 		appointmentType = aType;
+		name = n;
+		time = forTime;
 		
 	}
 	
