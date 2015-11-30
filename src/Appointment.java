@@ -1,50 +1,47 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.AbstractCollection;
 import java.util.Random;
 
-//HashMap
-//LinkedHashMap
-//Hashtable
 
-//defining a thread 
-class MyThread extends Thread {
 
+public class Appointment extends Thread {
 	private static int time;
 	private static Patient patient;
+	public static String doctor = "Dr.Fallah";
+	
+	
 
-	MyThread(Patient withPatient) {
+	Appointment(Patient withPatient) {
 		patient = withPatient;
-		MyThread.setTime(patient.getTime());
+		Appointment.setTime(patient.getTime());
 
 	}
 	
-	MyThread() {
+	Appointment() {
 		
 	}
 
 	public void run() {// job of thread
 		try {
-			
-			System.out.println("Doctor is seeing " + patient.getName());
-			sleep(1000);
+			sleep(2000);
+			System.out.println(doctor + " is seeing " + patient.getName());
+			sleep(2000);
 			System.out.println("The patient is here for a " + patient.getAppointmentType());
+			sleep(2000);
 			if(time > 3000) {
-				sleep(1000);
+				sleep(2000);
 				System.out.println("Tell the next patient he'll be done at the half hour mark");
+				sleep(2000);
 			} else if (time < 2000) {
+				sleep(2000);
 				System.out.println("The doctor should be out 20 minutes from his appointment");
-				sleep(1000);
+				sleep(2000);
 			} else {
+				sleep(2000);
 				System.out.println("The doctor should be out of his appointment soon");
-				sleep(1000);
+				sleep(2000);
 			}
 			sleep(time);
-			
+			sleep(2000);
 			System.out.println("Doctor will see the next patient");
-			
 			sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -56,15 +53,14 @@ class MyThread extends Thread {
 	}
 
 	public static void setTime(int time) {
-		MyThread.time = time;
+		Appointment.setTime(time);
 	}
+
 }
 
-// theres gonna be a boolean variable for the doctor class that will determine
-// whether he is done with a patient or not, or whats on his agenda
-//
 
-class ThreadDemo {
+
+class DemoApp {
 	
 	private static MyThread appointment = new MyThread();
 	private static Patient[] patients;
@@ -75,10 +71,10 @@ class ThreadDemo {
 		Patient patient1 = new Patient("Physical","John Keys", randInt(2000,3600));
 		Patient patient2 = new Patient("Check up","Marcus Mariota", randInt(2000,3900));
 		Patient patient3 = new Patient("Pick up prescription","Alex Fallah", randInt(2000,3900));
+		Patient patient4 = new Patient("New Patient appointment","Karina Assiter", randInt(3000,6000));
+		Patient patient5 = new Patient("Physical","David Uv",randInt(3400,4200));
 		
-		Patient patient4 = new Patient("New Patient","Karina", randInt(1000,3900));
-		
-		patients = new Patient[] {patient1, patient2,patient3,patient4};
+		patients = new Patient[] {patient1, patient2,patient3,patient4,patient5};
 		
 		for(int i = 0; i < patients.length; i++) {
 			appointment = new MyThread(patients[i]);
@@ -99,4 +95,3 @@ class ThreadDemo {
 	}
 }
 
-// we need a patient prioritizer

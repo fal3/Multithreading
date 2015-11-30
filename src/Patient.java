@@ -33,8 +33,11 @@ class Patient {
 	
 	Patient(String aType, String n, int forTime) {
 		appointmentType = aType;
-		name = n;
+		setName(n);
 		time = forTime;
+	}
+	
+	Patient() {
 		
 	}
 	
@@ -43,8 +46,6 @@ class Patient {
 	public static int randInt(int min, int max) {
 		
 		Random rand = new Random();
-		// nextInt is normally exclusive of the top value,
-		// so add 1 to make it inclusive
 		int randomNum = rand.nextInt((max - min) + 1) + min;
 
 		return randomNum;
@@ -52,12 +53,17 @@ class Patient {
 	
 	public static int pickTime() {
 		int myTimes[];
-		myTimes = new int[] {150, 300, 600 };
-		
+		myTimes = new int[] {150, 300, 600};
 		int pickedTime = myTimes[randInt(0,2)];
-		
 		return pickedTime;
-		
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 }
