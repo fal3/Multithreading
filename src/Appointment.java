@@ -12,7 +12,6 @@ public class Appointment extends Thread {
 	Appointment(Patient withPatient) {
 		patient = withPatient;
 		Appointment.setTime(patient.getTime());
-
 	}
 	
 	Appointment() {
@@ -62,7 +61,7 @@ public class Appointment extends Thread {
 
 class DemoApp {
 	
-	private static MyThread appointment = new MyThread();
+	private static Appointment appointment = new Appointment();
 	private static Patient[] patients;
 	
 	private static Patient patient;
@@ -77,7 +76,7 @@ class DemoApp {
 		patients = new Patient[] {patient1, patient2,patient3,patient4,patient5};
 		
 		for(int i = 0; i < patients.length; i++) {
-			appointment = new MyThread(patients[i]);
+			appointment = new Appointment(patients[i]);
 			appointment.sleep(2200);
 			appointment.start();
 			appointment.sleep(3000);
